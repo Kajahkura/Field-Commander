@@ -193,9 +193,9 @@ export function SiteForm({
   onClose: () => void;
   geo: boolean;
 }) {
-  const [coords, setCoords] = useState({
-      lat: site?.lat ?? 9.065,
-      lon: site?.lon ?? 7.466,
+  const [coords, setCoords] = useState<{lat: number | ""; lon: number | ""}>({
+      lat: site?.lat ?? "",
+      lon: site?.lon ?? "",
     }),
     [query, setQuery] = useState(""),
     [results, setResults] = useState<any[]>([]),
@@ -234,7 +234,8 @@ export function SiteForm({
         revision: site?.revision || 0,
         updatedAt: new Date().toISOString(),
         name: String(f.get("name")).trim(),
-        ...coords,
+        lat: Number(coords.lat),
+        lon: Number(coords.lon),
         address,
         entrance: String(f.get("entrance")),
         contact: String(f.get("contact")),
@@ -329,7 +330,7 @@ export function SiteForm({
               required
               value={coords.lat}
               onChange={(e) =>
-                setCoords({ ...coords, lat: Number(e.target.value) })
+                setCoords({ ...coords, lat: e.target.value === "" ? "" : Number(e.target.value) })
               }
             />
           </Field>
@@ -342,7 +343,7 @@ export function SiteForm({
               required
               value={coords.lon}
               onChange={(e) =>
-                setCoords({ ...coords, lon: Number(e.target.value) })
+                setCoords({ ...coords, lon: e.target.value === "" ? "" : Number(e.target.value) })
               }
             />
           </Field>

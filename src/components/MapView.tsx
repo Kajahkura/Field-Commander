@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import * as maplibregl from "maplibre-gl";
+import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?url";
 import type { Feature, LineString } from "geojson";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Site, Report } from "../domain";
 import { MapPin, Layers, Maximize2, WifiOff } from "lucide-react";
+maplibregl.setWorkerUrl(mapWorkerUrl);
 export default function MapView({
   sites,
   reports = [],

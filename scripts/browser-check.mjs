@@ -103,6 +103,8 @@ await page.getByRole("button", { name: "Close dialog" }).click();
 await page.getByRole("button", { name: "Sites & map", exact: true }).click();
 await page.getByRole("button", { name: "Add site", exact: true }).click();
 await page.getByLabel("Site name").fill("Receipt test site");
+await page.getByLabel("Latitude", { exact: true }).fill("51.5074");
+await page.getByLabel("Longitude", { exact: true }).fill("-0.1278");
 await page.getByRole("button", { name: "Save site", exact: true }).click();
 await page.getByText("Receipt test site", { exact: true }).waitFor();
 async function outbox(expected) {
