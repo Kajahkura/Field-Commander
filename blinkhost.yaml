@@ -1,0 +1,44 @@
+schema: blinkhost/v1
+application:
+  root: .
+frontend:
+  root: .
+  dependency_root: .
+  framework: react
+  package_manager: npm
+  install: npm ci
+  build: npm run build
+  dev: npm run dev
+  output: dist
+modules:
+  - name: operations
+    path: _server_islands/operations
+    language: rust
+    entrypoint: src/main.rs
+    abi: blinkhost-wasi-1
+    sdk: 1.1.0
+resources:
+  databases:
+    - binding: DEFAULT
+      schema: database/DEFAULT/schema.sql
+      migrations: database/DEFAULT/migrations
+  secrets:
+    - FIELD_WORKSPACE_ID
+    - FIELD_WORKSPACE_NAME
+    - FIELD_OWNER_NAME
+    - FIELD_OWNER_KEY
+    - FIELD_DB_GENERATION
+    - FIELD_DB_ID
+preview:
+  enabled: false
+  database_mode: isolated_branch
+ignore:
+  - .private
+  - .blinkhost
+  - node_modules
+  - dist
+  - .image-venv
+  - output
+  - verification
+  - research
+  - _server_islands/operations/vendor/crates

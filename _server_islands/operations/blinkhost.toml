@@ -1,0 +1,5 @@
+schema_version = 1
+language = "rust-wasi"
+entrypoint = "src/main.rs"
+abi_version = "blinkhost-wasi-1"
+sdk_version = "1.1.0"
