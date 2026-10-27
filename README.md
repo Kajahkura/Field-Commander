@@ -10,6 +10,9 @@ Built by **Obed Onyedika Inya** with React, TypeScript, Rust and a managed SQL d
 
 ![Illustration of civilian field teams connecting a clinic, warehouse and service site](public/operations-landscape.webp)
 
+
+[About the creator](https://onyedika.blinkhost.website/about) · [Project case study](https://onyedika.blinkhost.website/_server_islands/api/read/work/field-commander)
+
 ## Where it helps
 
 | Situation | What the team can do |
